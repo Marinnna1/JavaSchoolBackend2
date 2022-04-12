@@ -25,7 +25,7 @@ public class AdamsMethod implements Method {
         x[3] = rungeKuttaMethod.x[3];
         y[1] = rungeKuttaMethod.y[1];
         y[2] = rungeKuttaMethod.y[2];
-        y[3] = rungeKuttaMethod.y[3];
+        y[3] = RungeKuttaMethod.y[3];
 
         for (int i = 4; i < y.length; i++) {
             x[i] = x[0] + i * h;

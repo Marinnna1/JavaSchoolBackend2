@@ -13,7 +13,7 @@ public class Writer {
     public static double[] results;
     public static Function function;
 
-    static void printResults(Function f, Method method, double e) {
+    static void printResults(Function f, Method method, double e, double d) {
         function = f;
         makeTable();
         addData(method, e);
@@ -22,7 +22,7 @@ public class Writer {
 
     private static void makeTable() {
         System.out.format("--------------------------------------------------------------------------------%n");
-        System.out.format("| i |    x(i)    |    Р’С‹С‡РёСЃР»РµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ    | РўРѕС‡РЅРѕРµ СЂРµС€РµРЅРёРµ |  РџРѕРіСЂРµС€РЅРѕСЃС‚СЊ  |%n");
+        System.out.format("| i |    x(i)    |    Вычисленное значение    | Точное решение |  Погрешность  |%n");
         System.out.format("--------------------------------------------------------------------------------%n");
     }
 
@@ -44,7 +44,6 @@ public class Writer {
             results[i] = function.getSolveFunction(x[i]);
         }
         System.out.format("--------------------------------------------------------------------------------%n");
-
     }
 
     private static String parse(double number, double e) {

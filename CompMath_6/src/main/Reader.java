@@ -17,7 +17,7 @@ public class Reader {
 
         Method method = getMethod();
 
-        System.out.println("Р’РІРµРґРёС‚Рµ РёРЅС‚РµСЂРІР°Р» РґРёС„С„РµСЂРµРЅС†РёСЂРѕРІР°РЅРёСЏ");
+        System.out.println("Введите интервал дифференцирования");
         double a = getA();
         double b = getB(a);
 
@@ -30,13 +30,13 @@ public class Reader {
 
         function.countConstant(a, y0);
         method.solve(function, a, b, y0, h);
-        Writer.printResults(function, method, e);
+        Writer.printResults(function, method, e, b-a);
     }
 
     private static Function getFunction() throws IOException {
         FirstFunction firstFunction = new FirstFunction();
         SecondFunction secondFunction = new SecondFunction();
-        System.out.println("РќР°РїРёС€РёС‚Рµ РЅРѕРјРµСЂ С„СѓРЅРєС†РёРё, РєРѕС‚РѕСЂСѓСЋ С…РѕРґРёС‚Рµ СЂРµС€РёС‚СЊ");
+        System.out.println("Напишите номер функции, которую ходите решить");
         System.out.println("1) " + firstFunction.getEquation());
         System.out.println("2) " + secondFunction.getEquation());
 
@@ -56,7 +56,7 @@ public class Reader {
     private static double getA() {
         Double a = null;
         do {
-            System.out.println("Р’РІРµРґРёС‚Рµ a");
+            System.out.println("Введите a");
             try {
                 a = Double.parseDouble(consoleReader.readLine());
             } catch (Exception ignored) {
@@ -67,9 +67,9 @@ public class Reader {
     }
 
     private static Method getMethod() throws IOException {
-        System.out.println("РќР°РїРёС€РёС‚Рµ РЅРѕРјРµСЂ С„СѓРЅРєС†РёРё, РєРѕС‚РѕСЂСѓСЋ С…РѕРґРёС‚Рµ СЂРµС€РёС‚СЊ");
-        System.out.println("1) РњРµС‚РѕРґ Р СѓРЅРіРµ-РљСѓС‚С‚Р° 4-РіРѕ РїРѕСЂСЏРґРєР°");
-        System.out.println("2) РњРµС‚РѕРґ РђРґР°РјСЃР°");
+        System.out.println("Напишите номер функции, которую ходите решить");
+        System.out.println("1) Метод Рунге-Кутта 4-го порядка");
+        System.out.println("2) Метод Адамса");
 
         String answer;
         do {
@@ -86,7 +86,7 @@ public class Reader {
         Double b = null;
 
         do {
-            System.out.println("Р’РІРµРґРёС‚Рµ b");
+            System.out.println("Введите b");
             try {
                 b = Double.parseDouble(consoleReader.readLine());
                 if (b < a) {
@@ -102,7 +102,7 @@ public class Reader {
     private static double getY0(double a) {
         Double y0 = null;
         do {
-            System.out.println("Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ С„СѓРЅРєС†РёРё РІ С‚РѕС‡РєРµ a");
+            System.out.println("Введите значение функции в точке a");
             try {
                 y0 = Double.parseDouble(consoleReader.readLine());
             } catch (Exception ignored) {
@@ -115,7 +115,7 @@ public class Reader {
         Double h = null;
 
         do {
-            System.out.println("Р’РІРµРґРёС‚Рµ С€Р°Рі h");
+            System.out.println("Введите шаг h");
             try {
                 h = Double.parseDouble(consoleReader.readLine());
                 if (h > (b - a) || h < 0) {
@@ -131,7 +131,7 @@ public class Reader {
     private static double getE() throws IOException {
         Double e = null;
         do {
-            System.out.println("Р’РІРµРґРёС‚Рµ С‚РѕС‡РЅРѕСЃС‚СЊ РІС‹С‡РёСЃР»РµРЅРёСЏ");
+            System.out.println("Введите точность вычисления");
             try {
                 e = Double.parseDouble(consoleReader.readLine());
                 if (!(e > 0 && e < 1)) {
